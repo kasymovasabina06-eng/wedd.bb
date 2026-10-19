@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ky">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="description" content="Бекнур менен Берметтын үйлөнүү тоюна чакыруу сайты">
+    <title>Бермет & Бекнур | Үйлөнүү тою</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500;6..96,600&family=Cormorant+Garamond:wght@400;500;600&family=El+Messiri:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css?v=9.0">
+</head>
+<body>
+    <audio id="music" loop preload="auto">
+        <source src="music.mp3?v=8" type="audio/mpeg">
+    </audio>
+
+    <!-- Жаңы төрт секунддук видео обложка -->
+    <section id="cover" class="cover" aria-label="Үйлөнүү тоюна чакыруу обложкасы">
+        <video id="video" class="cover-video cover-video-main" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="cover-poster.jpg">
+            <source src="cover-mobile.mp4?v=10" type="video/mp4" media="(max-width: 760px)">
+            <source src="cover-mobile.mp4?v=10" type="video/mp4">
+        </video>
+        <div class="cover-overlay"></div>
+
+        <div class="cover-content">
+            <div class="cover-kicker">ҮЙЛӨНҮҮ ТОЮНА ЧАКЫРУУ</div>
+
+            <div class="cover-main">
+                <h1>Бермет <span>&</span> Бекнур</h1>
+                <div class="cover-date">20 • 06 • 2027</div>
+                <p>Биздин өзгөчө күнүбүзгө чакырабыз</p>
+
+                <button id="openInvitation" class="open-button" type="button">
+                    <span>Ачуу үчүн басыңыз</span>
+                </button>
+
+                <div class="cover-scroll" aria-hidden="true"><span></span><span></span></div>
+            </div>
+        </div>
+    </section>
+
+    <main id="mainSite" class="wedding-site" aria-hidden="true">
+        <button id="musicToggle" class="music-toggle" type="button" aria-label="Музыканы токтотуу" title="Музыка">
+            <span aria-hidden="true">♫</span>
+        </button>
+
+        <!-- Гүлдесте скролл менен гана кыймылдайт жана мазмундун үстүнөн өтпөйт. -->
+        <div id="scrollGuide" class="scroll-guide" aria-hidden="true">
+            <svg id="scrollJourneySvg" class="scroll-guide-line" preserveAspectRatio="none">
+                <path id="scrollJourneyPath"></path>
+            </svg>
+            <img id="scrollBouquet" class="scroll-bouquet" src="bouquet.png" alt="">
+        </div>
+
+        <!-- 1. Биринчи текст -->
+        <section class="site-section invitation-section bouquet-stop" id="invitation" data-bouquet-side="right" data-bouquet-y="0.34">
+            <div class="template-card template-one scroll-reveal">
+                <div class="template-one-content">
+                    <h2>Кымбаттуу туугандар,<br>жакындар жана достор!</h2>
+                    <div class="ornament-divider" aria-hidden="true"><span></span><b>❦</b><span></span></div>
+                    <p>Ар бир адамдын жашоосунда жүрөктө түбөлүк сакталып кала турган өзгөчө күндөр болот.</p>
+                    <p>Биз үчүн ошондой күн — балдарыбыздын кол кармашып, жаңы жашоо жолуна кадам таштаган күнү.</p>
+                    <p>Бул өзгөчө жана кубанычтуу күнүбүздө сиздерди биздин бактыбыздын күбөсү болууга, ак тилектериңиздерди айтып, жылуу маанайыңыздар менен бөлүшүүгө чын жүрөгүбүздөн чакырабыз.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Сүрөт альбому -->
+        <section class="site-section album-section bouquet-stop" id="album" data-bouquet-side="left" data-bouquet-y="0.30">
+            <h2 class="single-word-title scroll-reveal">Эстеликтер</h2>
+
+            <div class="album-launch scroll-reveal">
+                <div class="album-cover-shell">
+                    <img src="album-01.jpg" alt="Бекнур менен Берметтын сүрөт альбомунун мукабасы">
+                </div>
+                <div class="album-action">
+                    <svg class="spiral-arrow" viewBox="0 0 170 120" aria-hidden="true">
+                        <path d="M9 28 C48 0 119 7 128 47 C137 83 95 101 70 81 C47 62 67 40 93 47 C114 52 109 77 93 90 C78 101 60 106 47 111"></path>
+                        <path d="M47 111 L66 103 M47 111 L60 126"></path>
+                    </svg>
+                    <span class="button-cue"><b>↘</b> Сүрөттөрдү көрүү үчүн басыңыз</span>
+                    <button id="openAlbum" class="primary-button" type="button">Альбомду ачуу</button>
+                </div>
+            </div>
+
+            <div class="minimal-countdown scroll-reveal" aria-label="Тойго чейин калган убакыт">
+                <p>Биздин өзгөчө күнгө чейин</p>
+                <div class="countdown-grid">
+                    <div><strong id="countdownDays">0</strong><span>күн</span></div>
+                    <div><strong id="countdownHours">00</strong><span>саат</span></div>
+                    <div><strong id="countdownMinutes">00</strong><span>мүнөт</span></div>
+                    <div><strong id="countdownSeconds">00</strong><span>секунд</span></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Календардын айланасындагы бөлүк толугу менен бордовый. -->
+        <section class="calendar-band bouquet-stop" id="calendar" data-bouquet-side="right" data-bouquet-y="0.62">
+            <div class="calendar-content scroll-reveal">
+                <div class="calendar-month">ИЮНЬ</div>
+                <div class="calendar-year">2027</div>
+                <div class="calendar-weekdays" aria-hidden="true">
+                    <span>Дш</span><span>Шш</span><span>Шр</span><span>Бш</span><span>Жм</span><span>Иш</span><span>Жк</span>
+                </div>
+                <div class="calendar-days" aria-label="2027-жылдын июнь айынын календары"></div>
+                <div class="calendar-signature">Бермет & Бекнур</div>
+                <div class="calendar-caption">20-июнь — биздин өзгөчө күнүбүз</div>
+            </div>
+        </section>
+
+        <!-- 4. Тайминг — мурунку декоративдүү көрүнүшү сакталды. -->
+        <section class="site-section timing-section bouquet-stop" id="timing" data-bouquet-side="left" data-bouquet-y="0.42">
+            <div class="section-heading scroll-reveal">
+                <span>20.06.2027</span>
+                <h2>Той күнүнүн тартиби</h2>
+            </div>
+
+            <div class="timing-list scroll-reveal">
+                <svg class="timing-route" viewBox="0 0 400 640" preserveAspectRatio="none" aria-hidden="true">
+                    <path d="M320 15 C345 90 328 160 268 210 C206 264 135 285 124 350 C114 414 169 445 225 477 C280 510 271 575 315 625"></path>
+                    <text x="312" y="47">♥</text>
+                    <text x="111" y="377">♥</text>
+                </svg>
+                <article class="timing-item timing-left">
+                    <div class="timing-time">❀ <b>17:00</b> ❀</div>
+                    <h3>Коноктордун чогулушу</h3>
+                </article>
+                <article class="timing-item timing-right">
+                    <div class="timing-time">❀ <b>18:00</b> ❀</div>
+                    <h3>Тойдун башталышы</h3>
+                </article>
+                <article class="timing-item timing-left">
+                    <div class="timing-time">❀ <b>23:30</b> ❀</div>
+                    <h3>Тойдун жыйынтыгы</h3>
+                </article>
+            </div>
+        </section>
+
+        <!-- 5. Экинчи текст -->
+        <section class="site-section message-section bouquet-stop" id="message" data-bouquet-side="right" data-bouquet-y="0.58">
+            <div class="template-card template-two scroll-reveal">
+                <div class="template-two-content">
+                    <h2>Урматтуу коноктор!</h2>
+                    <div class="ornament-divider" aria-hidden="true"><span></span><b>❦</b><span></span></div>
+                    <p>Сиздерди жаштарыбыздын өмүрүндөгү эң маанилүү жана кубанычтуу күндөрдүн бирине — үйлөнүү үлпөт тоюна чын жүрөгүбүздөн чакырабыз.</p>
+                    <p>Бул өзгөчө күнү жаныбызда болуп, кубанычыбызды тең бөлүшүп, жаш жубайларга ак баталарыңызды жана жакшы каалоо-тилектериңиздерди арнашыңыздар — биз үчүн чоң сыймык жана баа жеткис белек.</p>
+                    <p>Сиздердин катышууңуздар той көркүн ачып, жаштардын жаңы турмуш жолуна кут, береке жана бакыт алып келсин.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. 2GIS — кызыл жибек фон бүтүндөй секцияга жайылат. -->
+        <section class="venue-silk-band bouquet-stop" id="venue" data-bouquet-side="left" data-bouquet-y="0.38">
+            <div class="venue-silk-content scroll-reveal">
+                <span class="venue-kicker">Той өтүүчү жер</span>
+                <h2>«Айкөл Ордо» тойканасы</h2>
+                <p>Бишкек шаары, Анкара көчөсү, 2</p>
+                <div class="venue-details">
+                    <span>20-июнь, 2027-жыл</span>
+                    <span>Коноктордун чогулушу — 17:00</span>
+                </div>
+                <div class="venue-cta-wrap">
+                    <svg class="spiral-arrow venue-arrow" viewBox="0 0 170 120" aria-hidden="true">
+                        <path d="M9 28 C48 0 119 7 128 47 C137 83 95 101 70 81 C47 62 67 40 93 47 C114 52 109 77 93 90 C78 101 60 106 47 111"></path>
+                        <path d="M47 111 L66 103 M47 111 L60 126"></path>
+                    </svg>
+                    <span class="button-cue venue-cue"><b>↘</b> Картадан жайгашкан жерин караңыз</span>
+                    <a class="primary-button venue-button" href="https://2gis.kg/bishkek/search/%D0%90%D0%B9%D0%BA%D0%BE%D0%BB%20%D0%BE%D1%80%D0%B4%D0%BE%20%D0%90%D0%BD%D0%BA%D0%B0%D1%80%D0%B0%202%20%D0%91%D0%B8%D1%88%D0%BA%D0%B5%D0%BA" target="_blank" rel="noopener noreferrer" aria-label="2GIS картасынан ресторанды издөө">2GIS картасынан көрүү</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Анкета -->
+        <section class="site-section rsvp-section bouquet-stop" id="rsvp" data-bouquet-side="right" data-bouquet-y="0.52">
+            <div class="rsvp-template scroll-reveal">
+                <form id="weddingRsvpForm" class="rsvp-form" novalidate>
+                    <span class="rsvp-small">Сиздин жообуңуз биз үчүн маанилүү</span>
+                    <h2>Тойго катышасызбы?</h2>
+                    <p>Сураныч, жообуңузду алдын ала билдирип коюңуз.</p>
+
+                    <label for="guestName">Аты-жөнүңүз</label>
+                    <input id="guestName" name="name" type="text" autocomplete="name" placeholder="Аты-жөнүңүздү жазыңыз" required maxlength="100">
+
+                    <label for="guestCompanion">Ким менен келесиз?</label>
+                    <input id="guestCompanion" name="companion" type="text" placeholder="Жалгыз же коштоочуңуздун аты" maxlength="100">
+
+                    <div class="honeypot" aria-hidden="true">
+                        <label for="website">Бул талааны толтурбаңыз</label>
+                        <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+                    </div>
+
+                    <fieldset>
+                        <legend>Жообуңуз</legend>
+                        <label class="radio-row"><input type="radio" name="attendance" value="Ооба, сөзсүз келем" required><span>Ооба, сөзсүз келем</span></label>
+                        <label class="radio-row"><input type="radio" name="attendance" value="Тилекке каршы, келе албайм" required><span>Тилекке каршы, келе албайм</span></label>
+                    </fieldset>
+
+                    <div class="button-cue rsvp-cue"><b>↘</b> Жообуңузду жөнөтүү үчүн басыңыз</div>
+                    <button class="rsvp-submit" type="submit">Жоопту жөнөтүү</button>
+                    <p id="rsvpSuccess" class="rsvp-status" role="status" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+
+        <!-- 8. Той ээлери -->
+        <section class="site-section hosts-section bouquet-stop" id="hosts" data-bouquet-side="left" data-bouquet-y="0.44">
+            <div class="hosts-label scroll-reveal">
+                <img src="hosts-label.png" alt="Бордовый бантик жана боёк изи менен кооздолгон шаблон">
+                <div class="hosts-text">
+                    <span>Той ээлери</span>
+                    <h2>КУБАНЫЧ <i>&</i> МАЙРАМ</h2>
+                    <p class="hosts-subline">Бермет &amp; Бекнур</p>
+                </div>
+            </div>
+            <div class="final-blur" aria-hidden="true"></div>
+        </section>
+    </main>
+
+    <div id="albumModal" class="album-modal" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-label="Сүрөт альбому">
+        <button class="album-backdrop" type="button" data-close-album aria-label="Альбомду жабуу"></button>
+        <div class="album-dialog">
+            <button id="closeAlbum" class="album-close" type="button" aria-label="Альбомду жабуу">×</button>
+            <span class="album-mini-title">Бермет & Бекнур</span>
+            <h2>Биздин сүрөт альбомубуз</h2>
+            <figure class="album-photo-frame">
+                <img id="albumPhoto" src="album-01.jpg" alt="Бекнур менен Бермет тоолордун фонунда">
+                <figcaption id="albumCaption">1 / 5</figcaption>
+            </figure>
+            <div class="album-control-hint" aria-hidden="true">↙ Сүрөттөрдү жебелер менен которуңуз ↘</div>
+            <div class="album-controls">
+                <button id="previousPhoto" type="button">← Мурунку</button>
+                <div id="albumDots" class="album-dots" aria-label="Сүрөттөр"></div>
+                <button id="nextPhoto" type="button">Кийинки →</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js?v=9.0"></script>
+</body>
+</html>
